@@ -2,8 +2,13 @@ package com.lambdaschool.school.model;
 
 
 
+import com.lambdaschool.school.exception.ValidationError;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 // adapted from https://tools.ietf.org/html/rfc7807
