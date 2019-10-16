@@ -1,26 +1,33 @@
 package com.lambdaschool.school.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@ApiModel(value = "Course", description = "Course Entity")
 @Entity
 @Table(name = "course")
 public class Course
 {
+    @ApiModelProperty(name = "courseid", value = "Primary key for Course", required = true, example = "1")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long courseid;
 
+    @ApiModelProperty(name = "coursename", value = "Course name", example = "Data Science")
     private String coursename;
 
+    @ApiModelProperty(name = "instructor", value = "Instructor for Course")
     @ManyToOne
     @JoinColumn(name = "instructid")
     @JsonIgnoreProperties("courses")
     private Instructor instructor;
 
+    @ApiModelProperty(name = "students", value = "List of students taking Course")
     @ManyToMany(mappedBy = "courses")
     @JsonIgnoreProperties("courses")
     private List<Student> students = new ArrayList<>();
